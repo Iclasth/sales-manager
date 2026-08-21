@@ -1,4 +1,15 @@
-var builder = WebApplication.CreateBuilder(args);
+//Captura o diretório atual e remove a referência do symlink '/var' do bazzite
+var currentDir = Directory.GetCurrentDirectory().Replace("/var/home", "/home");
+
+//Força o ASP.NET a usar o caminho real absoluto para localizar as views
+var options = new WebApplicationOptions()
+{
+    Args = args,
+    ContentRootPath = currentDir
+};
+
+var builder = WebApplication.CreateBuilder(options);
+
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
