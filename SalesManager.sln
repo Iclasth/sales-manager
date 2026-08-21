@@ -1,0 +1,16 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SalesManager.Web", "SalesManager.Web\SalesManager.Web.csproj", "{B484F09E-EAB6-4CF3-B71B-2C0F0F5E64F9}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{B484F09E-EAB6-4CF3-B71B-2C0F0F5E64F9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B484F09E-EAB6-4CF3-B71B-2C0F0F5E64F9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B484F09E-EAB6-4CF3-B71B-2C0F0F5E64F9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B484F09E-EAB6-4CF3-B71B-2C0F0F5E64F9}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
