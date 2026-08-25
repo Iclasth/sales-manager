@@ -1,8 +1,4 @@
 //Captura o diretório atual e remove a referência do symlink '/var' do bazzite
-
-using Microsoft.EntityFrameworkCore;
-using SalesManager.Web.Data;
-
 var currentDir = Directory.GetCurrentDirectory().Replace("/var/home", "/home");
 
 //Força o ASP.NET a usar o caminho real absoluto para localizar as views
