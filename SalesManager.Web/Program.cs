@@ -20,7 +20,7 @@ builder.Services.AddControllersWithViews();
 
 // DbContext
 builder.Services.AddDbContext<SalesManagerDbContext>(options => 
-    options.UseSqlServer(builder.Configuration.GetConnectionString("SalesManagerDbContext")));
+    options.UseSqlServer(builder.Configuration.GetConnectionString("SalesManageDbContext")));
 
 var app = builder.Build();
 
