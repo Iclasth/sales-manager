@@ -22,10 +22,21 @@ builder.Services.AddControllersWithViews();
 builder.Services.AddDbContext<SalesManagerDbContext>(options => 
     options.UseSqlServer(builder.Configuration.GetConnectionString("SalesManageDbContext")));
 
+// Seeding Service
+builder.Services.AddScoped<SeedingService>();
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
-if (!app.Environment.IsDevelopment())
+if (app.Environment.IsDevelopment())
+{
+    using (var scope = app.Services.CreateScope())
+    {
+        var seedingService = scope.ServiceProvider.GetService<SeedingService>();
+        seedingService.Seed();
+    }
+}
+else
 {
     app.UseExceptionHandler("/Home/Error");
     // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
