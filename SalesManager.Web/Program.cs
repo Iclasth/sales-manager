@@ -2,6 +2,7 @@
 
 using Microsoft.EntityFrameworkCore;
 using SalesManager.Web.Data;
+using SalesManager.Web.Services;
 
 var currentDir = Directory.GetCurrentDirectory().Replace("/var/home", "/home");
 
@@ -24,6 +25,7 @@ builder.Services.AddDbContext<SalesManagerDbContext>(options =>
 
 // Seeding Service
 builder.Services.AddScoped<SeedingService>();
+builder.Services.AddScoped<SellerService>();
 
 var app = builder.Build();
 
