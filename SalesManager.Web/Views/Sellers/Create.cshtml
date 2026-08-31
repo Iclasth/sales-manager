@@ -1,0 +1,37 @@
+@using Microsoft.VisualStudio.Web.CodeGenerators.Mvc.Templates.BlazorIdentity.Pages.Manage
+@model SalesManager.Web.Models.Seller
+
+@{
+    ViewBag.Title = "Create";
+    Layout = "_Layout";
+}
+
+<h2>@ViewBag.Title</h2>
+
+<h4>Seller</h4>
+<hr >
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div class="mb-3">
+                <label asp-for="Name" class="form-label"></label>
+                <input asp-for="Name" class="form-control"></input>
+            </div>
+            <div class="mb-3">
+                <label asp-for="Email" class="form-label"></label>
+                <input asp-for="Email" class="form-control"></input>
+            </div>
+            <div class="mb-3">
+                <label asp-for="BirthDate" class="form-label"></label>
+                <input asp-for="BirthDate" class="form-control"></input>
+            </div>
+            <div class="mb-3">
+                <label asp-for="BaseSalary" class="form-label"></label>
+                <input asp-for="BaseSalary" class="form-control"></input>
+            </div>
+            <div class="mb-3">
+                <input type="submit" value="Create" class="btn btn-primary">
+            </div>
+        </form>
+    </div>
+</div>
