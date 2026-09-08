@@ -1,3 +1,4 @@
+using System.Diagnostics;
 using Microsoft.AspNetCore.Mvc;
 using SalesManager.Web.Models;
 using SalesManager.Web.Models.ViewModels;
@@ -45,11 +46,11 @@ public class SellersController : Controller
     {
         if (id == null)
         {
-            return NotFound();
+            return RedirectToAction(nameof(Error), new { message = "id not provide" });
         }
         
         var seller = _sellerService.FindById(id.Value);
-        if (seller == null) return NotFound();
+        if (seller == null) return RedirectToAction(nameof(Error), new { message = "id not find" });
         
         return View(seller);
         
@@ -69,11 +70,11 @@ public class SellersController : Controller
     {
         if (id == null)
         {
-            return NotFound();
+            return RedirectToAction(nameof(Error), new { message = "id not provide" });
         }
         
         var seller = _sellerService.FindById(id.Value);
-        if (seller == null) return NotFound();
+        if (seller == null) return RedirectToAction(nameof(Error), new { message = "id not find" });
         
         return View(seller);
     }
@@ -87,7 +88,7 @@ public class SellersController : Controller
 
         if (seller == null)
         {
-            return NotFound();
+            return RedirectToAction(nameof(Error), new { message = "id not provide" });
         }
 
         List<Department> departments = _departmentService.FindAll();
@@ -107,13 +108,19 @@ public class SellersController : Controller
             _sellerService.Update(seller);
             return RedirectToAction(nameof(Index));
         }
-        catch (NotFoundException)
+        catch (ApplicationException e)
         {
-           return NotFound();
+            return RedirectToAction(nameof(Error), new { message = e.Message });
         }
-        catch (DbConcurrencyException)
+    }
+
+    public IActionResult Error(string message)
+    {
+        var viewModel = new ErrorViewModel()
         {
-            return BadRequest();
-        }
+            Message = message,
+            RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier
+        };
+        return View(viewModel);
     }
 }
