@@ -1,3 +1,4 @@
+using Microsoft.EntityFrameworkCore;
 using SalesManager.Web.Data;
 using SalesManager.Web.Models;
 
@@ -25,7 +26,7 @@ public class SellerService
 
     public Seller FindById(int id)
     {
-        return _context.Seller.FirstOrDefault(sl => sl.Id == id);
+        return _context.Seller.Include(sl => sl.Department).FirstOrDefault(sl => sl.Id == id);
     }
 
     public void Remove(int id)

@@ -31,7 +31,7 @@
             </div>
             <div class="mb-3">
                 <label asp-for="Seller.DepartmentId" class="form-label"></label>
-                <select asp-for="Seller.DepartmentId" asp-items="@(new SelectList(Model.Departments, "Id", "Name"))" class="form-control"></select>
+                <select asp-for="Seller.Department.Name" asp-items="@(new SelectList(Model.Departments, "Id", "Name"))" class="form-control"></select>
             </div>
             <div class="mb-3">
                 <input type="submit" value="Create" class="btn btn-primary">

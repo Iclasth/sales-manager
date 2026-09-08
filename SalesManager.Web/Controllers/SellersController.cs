@@ -63,4 +63,17 @@ public class SellersController : Controller
         _sellerService.Remove(id);
         return RedirectToAction(nameof(Index));
     }
+
+    public IActionResult Details(int? id)
+    {
+        if (id == null)
+        {
+            return NotFound();
+        }
+        
+        var seller = _sellerService.FindById(id.Value);
+        if (seller == null) return NotFound();
+        
+        return View(seller);
+    }
 }
