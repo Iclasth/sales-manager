@@ -1,5 +1,7 @@
 //Captura o diretório atual e remove a referência do symlink '/var' do bazzite
 
+using System.Globalization;
+using Microsoft.AspNetCore.Localization;
 using Microsoft.EntityFrameworkCore;
 using SalesManager.Web.Data;
 using SalesManager.Web.Services;
@@ -33,6 +35,15 @@ var app = builder.Build();
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {
+    var enUs = new CultureInfo("en-US");
+    var localizationOptions = new RequestLocalizationOptions()
+    {
+        DefaultRequestCulture = new RequestCulture(enUs),
+        SupportedCultures = new List<CultureInfo> { enUs },
+        SupportedUICultures = new List<CultureInfo> { enUs }
+    };
+    
+    
     using (var scope = app.Services.CreateScope())
     {
         var seedingService = scope.ServiceProvider.GetService<SeedingService>();
