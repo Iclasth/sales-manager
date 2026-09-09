@@ -4,6 +4,7 @@ using System.Globalization;
 using Microsoft.AspNetCore.Localization;
 using Microsoft.EntityFrameworkCore;
 using SalesManager.Web.Data;
+using SalesManager.Web.Models;
 using SalesManager.Web.Services;
 
 var currentDir = Directory.GetCurrentDirectory().Replace("/var/home", "/home");
@@ -29,6 +30,7 @@ builder.Services.AddDbContext<SalesManagerDbContext>(options =>
 builder.Services.AddScoped<SeedingService>();
 builder.Services.AddScoped<SellerService>();
 builder.Services.AddScoped<DepartmentService>();
+builder.Services.AddScoped<SalesRecordService>();
 
 var app = builder.Build();
 
